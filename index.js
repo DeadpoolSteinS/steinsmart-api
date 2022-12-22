@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const accountRoutes = require("./routes/accountRoutes");
+const accountRouter = require("./routes/accountRoutes");
+const productRouter = require("./routes/productRoutes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,7 +11,8 @@ const db =
 
 app.use(cors());
 app.use(express.json());
-app.use(accountRoutes);
+app.use(accountRouter);
+app.use(productRouter);
 
 mongoose
   .connect(db, { useNewUrlParser: true })
