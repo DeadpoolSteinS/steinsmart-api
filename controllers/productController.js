@@ -39,3 +39,28 @@ exports.addProduct = async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 };
+
+exports.getProductById = async (req, res) => {
+  try {
+    // Dapatkan ID produk dari parameter rute
+    const { id } = req.params;
+
+    // Cari produk berdasarkan ID
+    const product = await Product.findById(id).exec();
+
+    if (product) {
+      res.json({
+        status: "sukses",
+        message: "Data product berhasil diambil.",
+        data: product,
+      });
+    } else {
+      res.json({
+        status: "gagal",
+        message: "Tidak ada data product dengan ID tersebut di database.",
+      });
+    }
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+};
