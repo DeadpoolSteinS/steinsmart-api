@@ -11,6 +11,7 @@ exports.verifyLogin = async (req, res) => {
       res.json({
         status: "sukses",
         message: "Akun dengan username dan password tersebut ada di database.",
+        data: account,
       });
     } else {
       res.json({
