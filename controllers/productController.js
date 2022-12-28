@@ -28,7 +28,7 @@ exports.addProduct = async (req, res) => {
     price: req.body.price,
     image: req.body.image,
     category_id: req.body.category_id,
-    discount_id: req.body.discount_id
+    discount_id: req.body.discount_id,
   });
 
   try {
@@ -61,6 +61,33 @@ exports.getProductById = async (req, res) => {
       res.json({
         status: "gagal",
         message: "Tidak ada data product dengan ID tersebut di database.",
+      });
+    }
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+};
+
+exports.searchProductByName = async (req, res) => {
+  try {
+    // Dapatkan nama produk dari parameter rute
+    const { name } = req.params;
+
+    // Cari produk berdasarkan nama
+    const products = await Product.find({
+      name: { $regex: name, $options: "i" },
+    }).exec();
+
+    if (products) {
+      res.json({
+        status: "sukses",
+        message: "Data product berhasil diambil.",
+        data: products,
+      });
+    } else {
+      res.json({
+        status: "gagal",
+        message: "Tidak ada data product dengan nama tersebut di database.",
       });
     }
   } catch (e) {

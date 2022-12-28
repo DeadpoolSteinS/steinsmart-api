@@ -14,6 +14,7 @@ exports.verifyLogin = async (req, res) => {
             status: "sukses",
             message:
               "Akun dengan username dan password tersebut ada di database.",
+            data: account,
           });
         } else {
           res.json({
@@ -39,6 +40,7 @@ exports.addAccount = async (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: hash,
+      image: req.body.image,
     });
 
     try {
