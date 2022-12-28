@@ -66,9 +66,9 @@ exports.addToCart = async (req, res) => {
 
 exports.getAccountCart = async (req, res) => {
 	try {
-		const account = JSON.parse(Cookies.get("account"));
+		const { id } = req.params;
 
-		const cart = await Product.findOne({ accountId: account._id });
+		const cart = await Cart.findOne({ accountId: id });
 
 		if (cart) {
 			res.json({
