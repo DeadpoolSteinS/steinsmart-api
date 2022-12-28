@@ -10,6 +10,7 @@ exports.addRating = async (req, res) => {
     accountId: accountId,
     productId: productId,
     value: req.body.value,
+    review: req.body.review
   });
 
   try {

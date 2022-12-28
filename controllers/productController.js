@@ -25,10 +25,8 @@ exports.addProduct = async (req, res) => {
   const product = new Product({
     name: req.body.name,
     detail: req.body.detail,
-    price: req.body.price,
+    price: 10000,
     image: req.body.image,
-    category_id: req.body.category_id,
-    discount_id: req.body.discount_id,
   });
 
   try {
