@@ -27,8 +27,8 @@ exports.addProduct = async (req, res) => {
     detail: req.body.detail,
     price: req.body.price,
     image: req.body.image,
-    category_id: req.body.category_id,
-    discount_id: req.body.discount_id
+    category_id: category_id,
+    discount_id: discount_id
   });
 
   try {

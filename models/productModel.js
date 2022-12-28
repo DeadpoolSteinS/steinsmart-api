@@ -5,8 +5,8 @@ const productSchema = new mongoose.Schema({
   detail: String,
   price: Number,
   image: String,
-  category_id: String,
-  discount_id: String
+  category_id: { type: mongoose.Types.ObjectId, ref: "Category" },
+  discount_id: { type: mongoose.Types.ObjectId, ref: "Discount" }
 });
 
 const Product = mongoose.model("Product", productSchema);
