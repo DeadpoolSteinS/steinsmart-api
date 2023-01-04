@@ -6,7 +6,7 @@ const productRouter = require("./routes/productRoutes");
 const ratingRouter = require("./routes/ratingRoutes");
 const commentRouter = require("./routes/commentRoutes");
 const cartRouter = require("./routes/cartRoutes");
-const categoryRouter = require("./routes/categoryRoutes");
+const orderRouter = require("./routes/orderRoutes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,7 +20,7 @@ app.use(productRouter);
 app.use(ratingRouter);
 app.use(commentRouter);
 app.use(cartRouter);
-app.use(categoryRouter);
+app.use(orderRouter);
 
 mongoose
   .connect(db, { useNewUrlParser: true })
